@@ -1,8 +1,12 @@
+import { useNavigate } from 'react-router';
+
+export { Books, Games } from './Categories';
+
 const categories = [
-	'Computers',
-	'Phones',
-	'Games',
+	// 'Computers',
+	// 'Phones',
 	'Books',
+	'Games',
 ];
 
 export const Shop = () => {
@@ -14,7 +18,13 @@ export const Shop = () => {
 }
 
 const Category = ({ text }) => {
-	return (<div className="cursor-pointer border-2 border-blue-700 rounded-md py-4 flex items-center justify-center">
+	const navigate = useNavigate();
+	
+	const handleClick = () => navigate(String(text).toLowerCase());
+
+	return (<div className="cursor-pointer border-2 border-blue-700 rounded-md py-4 flex items-center justify-center"
+		onClick={handleClick}
+	>
 		<p>{text}</p>
 	</div>);
 }

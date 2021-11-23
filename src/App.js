@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import { Home, Shop } from './pages';
+import { Books, Games } from './pages/Shop';
 
 import { NavLinkBar } from './components';
 
@@ -38,7 +39,10 @@ function App() {
 		<div className="border-2 border-white rounded-lg p-4 mx-4">
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/shop" element={<Shop />} />
+				<Route path="/shop" element={<Shop />} >
+					<Route path="books" element={<Books />} />
+					<Route path="games" element={<Games />} />
+				</Route>
 
 				<Route path="*" element={<div>
 					<p>404: No match for this route</p>
