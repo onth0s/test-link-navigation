@@ -9,7 +9,7 @@ export const NavLinkBar = ({ links = [] }) => {
 const InnerLink = ({ text, hideArrow }) => {
 	const arrow = <i className="transform scale-75 fas mt-1 fa-chevron-right" />;
 
-	return (<div className="flex space-x-2 bg-gray-600 items-center">
+	return (<div className="flex space-x-2 bg-gray-600_ items-center cursor-pointer">
 		<p className="capitalize">{text}</p>
 		{!hideArrow && arrow}
 	</div>);
