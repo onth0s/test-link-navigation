@@ -1,18 +1,27 @@
+import { Routes, Route } from 'react-router-dom';
+
+import { Home, Shop } from './pages';
+
 import { NavLinkBar } from './components';
 
 function App() {
-	return (<div className="container mx-auto">	
+	return (<div className="container mx-auto">
 		<NavLinkBar
 			links={[
 				'home',
 				'shop',
-				'electronics',
-				'phones',
-				'Xiaomi',
-				'Mi 11 Lite 5G',
+				'something else',
+				'"·$%&/()',
 				'checkout',
 			]}
 		/>
+
+		<div className="border-2 border-white rounded-lg p-4">
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/shop" element={<Shop />} />
+			</Routes>
+		</div>
 	</div>);
 }
 
