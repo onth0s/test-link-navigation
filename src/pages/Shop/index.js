@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router';
 export { Books, Games } from './Categories';
 
 const categories = [
-	'Books',
 	'Games',
+	'Books',
 ];
 
 export const Shop = () => {

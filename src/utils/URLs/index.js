@@ -4,6 +4,8 @@ const URLs = [
 	{ route: '/shop', name: 'Shop' },
 
 	{ route: '/shop/games', name: 'Games 111' },
+	{ route: '/shop/games/:id', name: 'Games 111' },
+
 	{ route: '/shop/books', name: 'Books 222' },
 ]
 
