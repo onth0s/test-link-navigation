@@ -1,3 +1,3 @@
 export const URLs = [
-	{ route: '', name: 'Home' },
+	{ route: '/', name: 'Home' },
 ]

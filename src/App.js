@@ -16,14 +16,15 @@ function App() {
 	useEffect(() => {
 		console.log(`pathname: ${pathname}`);
 
-		const names = pathname === '/' ? [""] : pathname.split('/');
+		const names = (pathname === '/') ? ["/"] : pathname.split('/');
+		names[0] = '/';
 		let names2 = [];
 
 		for (let i = 0; i < names.length; i++) {
 			let str = '';
 
 			for (let j = 0; j < i + 1; j++) {
-				str += names[j] + (j === i ? '' : '/');
+				str += names[j] + ((j === i) || (j === 0) ? '' : '/');
 			}
 
 			names2[i] = str;
@@ -37,23 +38,6 @@ function App() {
 
 	return (<div className="container mx-auto">
 		<NavLinkBar links={links} />
-
-		{/* <NavLinkBar
-			links={[
-				{
-					name: 'home',
-					route: '/'
-				},
-				{
-					name: 'shop',
-					route: '/shop'
-				},
-				{
-					name: 'checkout',
-					route: '/checkout'
-				},
-			]}
-		/> */}
 
 		{/* <div className="border-2 border-white rounded-lg p-4 mx-4 mb-2">
 			<Games />
