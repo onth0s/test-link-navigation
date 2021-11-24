@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router';
 export { Books, Games } from './Categories';
 
 const categories = [
-	// 'Computers',
-	// 'Phones',
 	'Books',
 	'Games',
 ];

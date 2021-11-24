@@ -6,50 +6,19 @@ import { Books, Games } from './pages/Shop';
 
 import { NavLinkBar } from './components';
 
-import { URLs } from './utils';
+import { getPathArr } from './utils';
 
 function App() {
-	const [links, setLinks] = useState([
-		{ name: 'home', route: '/' },
-	]);
+	const [links, setLinks] = useState([{ name: 'hoMe', route: '/' }]);
 
 	const { pathname } = useLocation();
 
 	useEffect(() => {
-		console.log(`pathname: ${pathname}`);
-
-		const names = (pathname === '/') ? ["/"] : pathname.split('/');
-		names[0] = '/';
-		let names2 = [];
-
-		for (let i = 0; i < names.length; i++) {
-			let str = '';
-
-			for (let j = 0; j < i + 1; j++) {
-				str += names[j] + ((j === i) || (j === 0) ? '' : '/');
-			}
-
-			names2[i] = str;
-		}
-
-		let arr = [];
-		names2.forEach(el => {
-			URLs.forEach(el2 => {
-				if (el === el2.route) arr.push(el2);
-			});
-		});
-
-		setLinks(l => arr);
-
-		// setLinks(l => []);
+		setLinks(() => getPathArr(pathname));
 	}, [pathname]);
 
 	return (<div className="container mx-auto">
 		<NavLinkBar links={links} />
-
-		{/* <div className="border-2 border-white rounded-lg p-4 mx-4 mb-2">
-			<Games />
-		</div> */}
 
 		<div className="border-2 border-white rounded-lg p-4 mx-4">
 			<Routes>

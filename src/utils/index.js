@@ -1,1 +1,1 @@
-export {URLs} from './URLs';
+export { getPathArr } from './URLs';
