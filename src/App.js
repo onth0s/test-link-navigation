@@ -6,6 +6,8 @@ import { Books, Games } from './pages/Shop';
 
 import { NavLinkBar } from './components';
 
+import { URLs } from './utils';
+
 function App() {
 	const [links, setLinks] = useState([
 		{ name: 'home', route: '/' },
@@ -30,8 +32,14 @@ function App() {
 			names2[i] = str;
 		}
 
-		console.log('names2:');
-		console.log(names2);
+		let arr = [];
+		names2.forEach(el => {
+			URLs.forEach(el2 => {
+				if (el === el2.route) arr.push(el2);
+			});
+		});
+
+		setLinks(l => arr);
 
 		// setLinks(l => []);
 	}, [pathname]);
@@ -52,7 +60,7 @@ function App() {
 				<Route path="/shop/games" element={<Games />} />
 
 				<Route path="*" element={<div>
-					<p>404: No match for this route</p>
+					<p>404: No match for this route!</p>
 				</div>} />
 			</Routes>
 		</div>
