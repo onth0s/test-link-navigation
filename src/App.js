@@ -1,23 +1,44 @@
+import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import { Home, Shop } from './pages';
 import { Books, Games } from './pages/Shop';
 
 import { NavLinkBar } from './components';
-import { useEffect, useState } from 'react';
 
 function App() {
-	const links = useState([
-		'Home'
+	const [links, setLinks] = useState([
+		{ name: 'home', route: '/' },
 	]);
 
 	const { pathname } = useLocation();
+
 	useEffect(() => {
 		console.log(`pathname: ${pathname}`);
+
+		const names = pathname === '/' ? [""] : pathname.split('/');
+		let names2 = [];
+
+		for (let i = 0; i < names.length; i++) {
+			let str = '';
+
+			for (let j = 0; j < i + 1; j++) {
+				str += names[j] + (j === i ? '' : '/');
+			}
+
+			names2[i] = str;
+		}
+
+		console.log('names2:');
+		console.log(names2);
+
+		// setLinks(l => []);
 	}, [pathname]);
 
 	return (<div className="container mx-auto">
-		<NavLinkBar
+		<NavLinkBar links={links} />
+
+		{/* <NavLinkBar
 			links={[
 				{
 					name: 'home',
@@ -31,20 +52,8 @@ function App() {
 					name: 'checkout',
 					route: '/checkout'
 				},
-				{
-					name: 'home',
-					route: '/'
-				},
-				{
-					name: 'shop',
-					route: '/shop'
-				},
-				{
-					name: 'checkout',
-					route: '/checkout'
-				},
 			]}
-		/>
+		/> */}
 
 		{/* <div className="border-2 border-white rounded-lg p-4 mx-4 mb-2">
 			<Games />
